@@ -23,6 +23,14 @@ export function SearchGifs (){
 	}
 
 	return <View style={styles.view}>
+
+		      <TextInput
+		        placeholder="Search Giphy"
+		        style={styles.textInput}
+		        onChangeText={(text) => {
+					debounce(() => fetchGifs(text), 300)
+				}}
+		      />
 			<View style={styles.image}>
 			{ gifs && gifs.length > 0 ? <Image
 				resizeMode='contain'
@@ -31,13 +39,6 @@ export function SearchGifs (){
 				: null 
 			}
 			</View>
-		      <TextInput
-		        placeholder="Search Giphy"
-		        style={styles.textInput}
-		        onChangeText={(text) => {
-					debounce(() => fetchGifs(text), 300)
-				}}
-		      />
 
 		    </View>
 }
